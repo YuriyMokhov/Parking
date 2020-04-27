@@ -1,48 +1,29 @@
 {
-  "name": "parking",
-  "version": "0.2.0",
-  "description": "Parking app",
-  "main": "index.js",
-  "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"npm run serve\" ",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "wsrv -s -o -l",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YuriyMokhov/parking.git"
-  },
-  "keywords": [
-    "angular2",
-    "template"
-  ],
-  "author": "Yury Mokhov mokhov86@yandex.ru>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/YuriyMokhov/parking/issues"
-  },
-  "homepage": "https://github.com/YuriyMokhov/parking/edit/master/README.md",
-  "dependencies": {
-    "@angular/common": "~2.2.0",
-    "@angular/compiler": "~2.2.0",
-    "@angular/core": "~2.2.0",
-    "@angular/forms": "~2.2.0",
-    "@angular/http": "~2.2.0",
-    "@angular/platform-browser": "~2.2.0",
-    "@angular/platform-browser-dynamic": "~2.2.0",
-    "@angular/router": "~3.2.0",
-    "systemjs": "0.19.40",
-    "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.26"
-  },
-  "devDependencies": {
-    "@types/node": "^6.0.46",
-    "concurrently": "^3.1.0",
-    "typescript": "^2.0.10",
-    "wsrv": "^0.1.6"
-  }
+    "name": "parking",
+    "version": "1.0.0",
+    "description": "Parking Project",
+    "author": "Mokhov Yury",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build"
+    },
+    "dependencies": {
+        "@angular/common": "~9.1.3",
+        "@angular/compiler": "~9.1.3",
+        "@angular/core": "~9.1.3",
+        "@angular/forms": "~9.1.3",
+        "@angular/platform-browser": "~9.1.3",
+        "@angular/platform-browser-dynamic": "~9.1.3",
+        "@angular/router": "~9.1.3",
+        "rxjs": "~6.5.5",
+        "zone.js": "~0.10.3"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "~0.901.3",
+        "@angular/cli": "~9.1.3",
+        "@angular/compiler-cli": "~9.1.3",
+        "@types/node": "^13.13.4",
+        "typescript": "~3.8.3"
+    }
 }
