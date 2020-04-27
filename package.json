@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/YuriyMokhov/parking/issues"
   },
-  "homepage": "https://github.com/DenisVuyka/ng2samples-blank#readme",
+  "homepage": "https://github.com/YuriyMokhov/parking/edit/master/README.md",
   "dependencies": {
     "@angular/common": "~2.2.0",
     "@angular/compiler": "~2.2.0",
