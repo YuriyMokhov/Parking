@@ -1,14 +1,38 @@
 {
-    "compileOnSave": false,
+    "compileOnSave": true,
     "compilerOptions": {
         "baseUrl": "./",
-        "sourceMap": true,
+        "paths": {
+            "@root/*": [
+                "src/*"
+            ],
+            "@componentes/*": [
+                "src/componentes/*"
+            ],
+            "@services/*": [
+                "src/services/*"
+            ],
+            "@helpers/*": [
+                "src/helpers/*"
+            ],
+            "@pages/*": [
+                "src/pages/*"
+            ],
+            "@entities/*": [
+                "src/entities/*"
+            ],
+            "@assets/*": [
+                "src/assets/*"
+            ]
+        },
+        "outDir": "./dist/out-tsc",
+        "sourceMap": false,
         "declaration": false,
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "module": "esnext",
+        "module": "es2015",
         "moduleResolution": "node",
-        "target": "es2015",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
         "typeRoots": [
             "node_modules/@types"
         ],
@@ -16,12 +40,5 @@
             "es2018",
             "dom"
         ]
-    },
-    "files": [
-        "src/main.ts",
-        "src/polyfills.ts"
-    ],
-    "include": [
-        "src/**/*.d.ts"
-    ]
+    }
 }
