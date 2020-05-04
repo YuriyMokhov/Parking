@@ -21,10 +21,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.authToken = this.authService.getAccessToken();
-    this.vkApiService.getTopicsByGroup().subscribe(topics => {
+    let self = this;
+    self.vkApiService.getTopicsByGroup().subscribe(data => {
+      self.topics = data.response.items;
 
-      this.topics = topics
+      self.topics.forEach(topic => {
+        self.vkApiService.getUserInfoById(topic.created_by)
+          .subscribe(user => {
+            console.log(user.response[0]);
+            topic.created_by_user = user.response[0]
+          }
+          );
+      });
+
     });
+
+
   }
 
 }

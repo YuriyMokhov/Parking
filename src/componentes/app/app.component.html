@@ -1,5 +1,15 @@
-<p>
-  app works!
-</p>
+<div style="margin: 0 auto; width: 600px;">
+  <nz-list nzItemLayout="horizontal">
+    <nz-list-item *ngFor="let topic of topics">
+      <nz-list-item-meta nzAvatar="{{topic.created_by_user.photo_50}}"
+        nzDescription="Сообщений: {{topic.comments}} &nbsp;&nbsp;Создано: {{topic.created | date: 'dd MMMM yyyy'}}">
 
-{{topics}}
+        <nz-list-item-meta-title>
+          <a href="https://ng.ant.design">{{ topic.title }}</a>
+        </nz-list-item-meta-title>
+
+      </nz-list-item-meta>
+    </nz-list-item>
+
+  </nz-list>
+</div>
