@@ -2,7 +2,8 @@
   <thead>
     <tr>
       <th *ngFor="let header of model?.headers">
-        {{header}}
+        <a href="{{'https://vk.com/' + header.relativeUrl}}" target="_blank">{{header.title}}</a>
+
       </th>
     </tr>
   </thead>
@@ -10,10 +11,19 @@
     <tr *ngFor="let row of model?.rows">
       <td *ngFor="let data of row; index as i">
         <div *ngIf="i == 0">
-          <img src="{{data}}" width="50px" height="50px" />
+          <a href="{{'https://vk.com/'+data.domain}}" target="_blank">
+            <img mat-card-avatar title="{{data.first_name + ' ' + data.last_name}}" src="{{data.photo_50}}" width="50px"
+              height="50px" />
+          </a>
+
         </div>
         <div *ngIf="i != 0">
-          <mat-icon aria-hidden="false" aria-label="Example home icon">check</mat-icon>
+          <mat-icon *ngIf="data; else elseBlock" aria-hidden="false">check_circle_outline
+          </mat-icon>
+
+          <ng-template #elseBlock>
+            <!-- <mat-icon aria-hidden="false">close</mat-icon> -->
+          </ng-template>
         </div>
 
 
@@ -21,7 +31,3 @@
     </tr>
   </tbody>
 </nz-table>
-<!-- 
-<ng-template #loading>
-  Загрузка...
-</ng-template> -->

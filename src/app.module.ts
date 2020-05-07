@@ -12,10 +12,11 @@ import { ResultTableComponent } from '@componentes/result-table/result-table.com
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpClientJsonpModule,
-        NzListModule, NzTableModule, MatIconModule, BrowserAnimationsModule, MatTableModule],
+        NzListModule, NzTableModule, MatIconModule, BrowserAnimationsModule, MatTableModule, MatCardModule],
     declarations: [AppComponent, ResultTableComponent],
     bootstrap: [AppComponent],
     providers: [

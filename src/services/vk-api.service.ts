@@ -54,13 +54,19 @@ export class VkApiService {
   }
 
   getMembersByGroup(groupId: number): Observable<any> {
-    let result = this.http.jsonp<any>(`https://api.vk.com/method/groups.getMembers?group_id=${groupId}&fields=photo_50&v=5.52&access_token=${this.token}`, 'callback')
+    let result = this.http.jsonp<any>(`https://api.vk.com/method/groups.getMembers?group_id=${groupId}&fields=domain,photo_50&v=5.52&access_token=${this.token}`, 'callback')
       .pipe(
         catchError((error) => {
           console.log(error);
           throw error;
         })
       );
+    return result;
+  }
+
+
+  getCommentsByTopic(topicId: number, groupId: number): Observable<any> {
+    let result = this.http.jsonp<any>(`https://api.vk.com/method/board.getComments?topic_id=${topicId}&group_id=${groupId}&v=5.52&access_token=${this.token}`, 'callback');
     return result;
   }
 }

@@ -1,4 +1,5 @@
 import { User } from "@entities/User";
+import { Comment } from "@entities/Comment";
 
 export interface Topic {
     id: number,
@@ -10,5 +11,7 @@ export interface Topic {
     updated_by: number,
     is_closed: boolean,
     is_fixed: boolean,
-    comments: number
+    comments: number,
+    comments_entities: Comment[];
+    relativeUrl: string;
 }

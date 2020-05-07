@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { VkApiService } from "@services/vk-api.service";
 import { Topic } from '@root/entities/Topic';
 import { User } from '@root/entities/User';
-import { Observable, forkJoin } from 'rxjs';
+import { forkJoin } from 'rxjs';
+import { Comment } from '@entities/Comment';
 
 @Component({
   selector: 'app-result-table',
@@ -10,23 +11,6 @@ import { Observable, forkJoin } from 'rxjs';
   styleUrls: ['./result-table.component.css']
 })
 export class ResultTableComponent implements OnInit {
-  // listOfData = [
-  //   {
-  //     key: '1',
-  //     name: 'John Brown',
-  //     age: 32
-  //   },
-  //   {
-  //     key: '2',
-  //     name: 'Jim Green',
-  //     age: 42
-  //   },
-  //   {
-  //     key: '3',
-  //     name: 'Joe Black',
-  //     age: 32
-  //   }
-  // ];
 
   private vkApiService: VkApiService;
   private topics: Topic[] = [];
@@ -41,61 +25,45 @@ export class ResultTableComponent implements OnInit {
 
   ngOnInit() {
     let self = this;
-    let observableGetTopicByGroup = self.vkApiService.getTopicsByGroup(this.groupId);
-    let observableGetMembersByGroup = self.vkApiService.getMembersByGroup(this.groupId);
+    let observableGetTopicByGroup = self.vkApiService.getTopicsByGroup(self.groupId);
+    let observableGetMembersByGroup = self.vkApiService.getMembersByGroup(self.groupId);
 
     forkJoin([observableGetTopicByGroup, observableGetMembersByGroup]).subscribe({
       next: (data) => {
         self.topics = data[0].response.items as Topic[];
+        self.topics.forEach(t => t.relativeUrl = `topic-${this.groupId}_${t.id}`);
+
         self.members = data[1].response.items as User[];
+
+        if (self.topics.length) {
+          forkJoin(self.topics.map(t => self.vkApiService.getCommentsByTopic(t.id, self.groupId))).subscribe({
+            next: (data) => {
+              self.topics.forEach((t, i) => t.comments_entities = data[i].response.items as Comment[])
+            },
+            error: (err) => console.log(err),
+            complete: () => self.fillModel()
+          });
+        }
+
       },
-      error: (err) => console.log(err),
-      complete: () => self.fillModel()
+      error: (err) => console.log(err)
+
+
     })
-    // self.vkApiService.getTopicsByGroup(this.groupId).subscribe(data => {
-    //   self.topics = data.response.items;
-
-    //   self.vkApiService.getMembersByGroup(this.groupId).subscribe(data => {
-    //     self.members = data.response.items as User[];
-    //     console.log(self.members);
-
-    //     this.fillModel();
-    //   });
-
-    //   self.vkApiService.getMembersByGroup(this.groupId).subscribe({
-    //     next: (data) => {
-    //       self.members = data.response.items as User[];
-    //       console.log(self.members);
-    //     },
-    //     error: (error) => {
-    //       console.log(error);
-    //     }
-
-    //   });
-
-    //   //Разобраться как собрать несколько тасков и заполнять таблицу после выполнения каждого из них!!!
-    // });
-
-
-
-
-
-    //получаем топики board.getTopics
-    //получаем юзеров в сообществе groups.getMembers 
-    //получаем какие юзеры имеют сообщения в топиках board.getComments
 
   }
 
   fillModel(): void {
     this.model = {
-      headers: [""].concat(this.topics.map(t => t.title)),
-      rows: this.members.map(member => (new Array<any>(member.photo_50)).concat(true, false, true, true, false, true))
-      // rows: [
-      //   ["User1", true, false, true, true, false, true],
-      //   ["User2", true, true, false, true, false, true],
-      //   ["User3", false, false, true, true, false, true]
-      // ]
-    }
+      headers: ([""] as Array<any>).concat(this.topics),
+      rows: this.members.map(member => {
+        return ([member] as Array<any>).concat(this.topics.map(topic => {
+          return topic.comments_entities.map(c => { return c.from_id; }).includes(member.id);
+        }));
+      })
+    };
+
+    console.log(this.model);
   }
 
 }
