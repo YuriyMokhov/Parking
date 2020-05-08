@@ -4,6 +4,8 @@ import { Topic } from '@root/entities/Topic';
 import { User } from '@root/entities/User';
 import { forkJoin } from 'rxjs';
 import { Comment } from '@entities/Comment';
+import { ResultTableModel } from './ResultTableModel';
+
 
 @Component({
   selector: 'app-result-table',
@@ -14,10 +16,10 @@ export class ResultTableComponent implements OnInit {
 
   private vkApiService: VkApiService;
   private topics: Topic[] = [];
-  members: User[] = [];
-  public model: any = null;
+  private members: User[] = [];
   private groupId: number = 148973127; //пока хардкорд
-  private isLoaded: boolean = false;
+
+  public model: ResultTableModel;
 
   constructor(vkApiService: VkApiService) {
     this.vkApiService = vkApiService;
@@ -53,17 +55,16 @@ export class ResultTableComponent implements OnInit {
 
   }
 
-  fillModel(): void {
-    this.model = {
-      headers: ([""] as Array<any>).concat(this.topics),
-      rows: this.members.map(member => {
-        return ([member] as Array<any>).concat(this.topics.map(topic => {
-          return topic.comments_entities.map(c => { return c.from_id; }).includes(member.id);
-        }));
-      })
-    };
+  isTopicIncludesMember(topic: Topic, member: User): boolean {
+    return topic.comments_entities.map(t => t.from_id).includes(member.id);
+  }
 
-    console.log(this.model);
+  getPostId(topic: Topic, member: User, groupId: number): number {
+    return topic.comments_entities.filter(c => c.from_id == member.id)[0].id;
+  }
+
+  fillModel(): void {
+    this.model = { topics: this.topics, members: this.members, groupId: this.groupId };
   }
 
 }

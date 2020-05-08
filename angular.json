@@ -16,8 +16,10 @@
             "tsConfig": "tsconfig.json",
             "aot": true,
             "styles": [
+              "./src/styles/styles.css",
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.css"
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.dark.css",
+              "./src/styles/ng-zerro-override.less"
             ]
           },
           "configurations": {

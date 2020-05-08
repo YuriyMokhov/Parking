@@ -1,32 +1,27 @@
 <nz-table [nzData]="model">
   <thead>
     <tr>
-      <th *ngFor="let header of model?.headers">
-        <a href="{{'https://vk.com/' + header.relativeUrl}}" target="_blank">{{header.title}}</a>
-
+      <th></th>
+      <th *ngFor="let topic of model?.topics">
+        <a href="{{'https://vk.com/' + topic.relativeUrl}}" target="_blank">{{topic.title}}</a>
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of model?.rows">
-      <td *ngFor="let data of row; index as i">
-        <div *ngIf="i == 0">
-          <a href="{{'https://vk.com/'+data.domain}}" target="_blank">
-            <img mat-card-avatar title="{{data.first_name + ' ' + data.last_name}}" src="{{data.photo_50}}" width="50px"
-              height="50px" />
-          </a>
+    <tr *ngFor="let member of model?.members">
+      <td><a href="{{'https://vk.com/'+member.domain}}" target="_blank">
+          <img mat-card-avatar title="{{member.first_name + ' ' + member.last_name}}" src="{{member.photo_50}}"
+            width="50px" height="50px" />
+        </a>
+      </td>
+      <td *ngFor="let topic of model?.topics; index as i" style="text-align: center;">
+        <mat-icon *ngIf="this.isTopicIncludesMember(topic, member); else elseBlock" aria-hidden="false">
+          <a href="{{'https://vk.com/topic-'+ model.groupId+'_'+ topic.id+'?post='+ this.getPostId(topic, member, model.groupId)}}"
+            target="_blank">check_circle_outline</a>
 
-        </div>
-        <div *ngIf="i != 0">
-          <mat-icon *ngIf="data; else elseBlock" aria-hidden="false">check_circle_outline
-          </mat-icon>
-
-          <ng-template #elseBlock>
-            <!-- <mat-icon aria-hidden="false">close</mat-icon> -->
-          </ng-template>
-        </div>
-
-
+        </mat-icon>
+        <ng-template #elseBlock>
+        </ng-template>
       </td>
     </tr>
   </tbody>

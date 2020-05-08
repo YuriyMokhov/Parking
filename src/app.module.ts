@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpClientJsonpModule,
@@ -20,7 +21,7 @@ import { MatCardModule } from '@angular/material/card';
     declarations: [AppComponent, ResultTableComponent],
     bootstrap: [AppComponent],
     providers: [
-        { provide: LOCALE_ID, useValue: "ru-RU" }
+        { provide: LOCALE_ID, useValue: "ru-RU" }, { provide: NZ_I18N, useValue: ru_RU }
         //otherProviders...
     ]
 })
