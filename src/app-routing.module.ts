@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from "./componentes/page-not-found/page-not-fou
 
 const routes: Routes = [
     // { path: 'group/:screenName', component: ResultTableComponent },
-    { path: '**', component: PageNotFoundComponent }
+    { path: '', component: PageNotFoundComponent }
 
 ]; // sets up routes constant where you define your routes
 
