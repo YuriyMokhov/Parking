@@ -38,6 +38,10 @@
           "options": {
             "browserTarget": "parking:build"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
