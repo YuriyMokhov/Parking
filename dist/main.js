@@ -221,11 +221,11 @@ var PageNotFoundComponent = /** @class */ (function () {
     PageNotFoundComponent.prototype.ngOnInit = function () {
     };
     PageNotFoundComponent.ɵfac = function PageNotFoundComponent_Factory(t) { return new (t || PageNotFoundComponent)(); };
-    PageNotFoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PageNotFoundComponent, selectors: [["app-page-not-found"]], decls: 4, vars: 0, consts: [["href", "https://yuriymokhov.github.io/Parking/group/madygulova_online"]], template: function PageNotFoundComponent_Template(rf, ctx) { if (rf & 1) {
+    PageNotFoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PageNotFoundComponent, selectors: [["app-page-not-found"]], decls: 4, vars: 0, consts: [["href", "https://coach-94e16.firebaseapp.com/group/madygulova_online"]], template: function PageNotFoundComponent_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " \u0414\u043B\u044F \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u0442\u0430\u0431\u0435\u043B\u044F \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0441\u044B\u043B\u043A\u0443 \u043D\u0430 \u0432\u0430\u0448\u0443 \u0433\u0440\u0443\u043F\u043F\u0443 \u0430\u043B\u044F ");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "a", 0);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "https://yuriymokhov.github.io/Parking/group/madygulova_online");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "https://coach-94e16.firebaseapp.com/group/madygulova_online");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvY29tcG9uZW50ZXMvcGFnZS1ub3QtZm91bmQvcGFnZS1ub3QtZm91bmQuY29tcG9uZW50LmNzcyJ9 */"] });
