@@ -6,8 +6,8 @@ import { AppComponent } from "@componentes/app/app.component"
 import { PageNotFoundComponent } from "./componentes/page-not-found/page-not-found.component";
 
 const routes: Routes = [
-    // { path: 'group/:screenName', component: ResultTableComponent },
-    { path: '**', component: PageNotFoundComponent }
+    { path: 'group/:screenName', component: ResultTableComponent },
+    //  { path: '**', component: PageNotFoundComponent }
 
 ]; // sets up routes constant where you define your routes
 
