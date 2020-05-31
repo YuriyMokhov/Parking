@@ -14,14 +14,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
+import { AppRoutingModule } from './app-routing.module';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule, HttpClientJsonpModule,
-        NzListModule, NzTableModule, MatIconModule, BrowserAnimationsModule, MatTableModule, MatCardModule],
+        NzListModule, NzTableModule, MatIconModule, BrowserAnimationsModule, MatTableModule, MatCardModule,
+        AppRoutingModule],
     declarations: [AppComponent, ResultTableComponent],
     bootstrap: [AppComponent],
     providers: [
-        { provide: LOCALE_ID, useValue: "ru-RU" }, { provide: NZ_I18N, useValue: ru_RU }
+        { provide: LOCALE_ID, useValue: "ru-RU" }, { provide: NZ_I18N, useValue: ru_RU },
+        CookieService
         //otherProviders...
     ]
 })

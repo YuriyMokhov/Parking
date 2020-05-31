@@ -69,4 +69,9 @@ export class VkApiService {
     let result = this.http.jsonp<any>(`https://api.vk.com/method/board.getComments?topic_id=${topicId}&group_id=${groupId}&v=5.52&access_token=${this.token}`, 'callback');
     return result;
   }
+
+  resolveScreenName(screen_name: string) {
+    let result = this.http.jsonp<any>(`https://api.vk.com/method/utils.resolveScreenName?screen_name=${screen_name}&v=5.52&access_token=${this.token}`, 'callback');
+    return result;
+  }
 }
